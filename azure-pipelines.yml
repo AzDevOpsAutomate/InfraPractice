@@ -5,7 +5,7 @@ steps:
 - task: TerraformInstaller@1
   displayName: Terraform Install
   inputs:
-    terraformVersion: '1.5.7'
+    terraformVersion: '1.12.2'
 
 - task: TerraformTask@5
   displayName: Terraform Init
@@ -18,7 +18,7 @@ steps:
     backendAzureRmResourceGroupName: 'akansha-rg'
     backendAzureRmStorageAccountName: 'akanshakastorage'
     backendAzureRmContainerName: 'akanshacontainer'
-    backendAzureRmKey: 'tfstatefile'
+    backendAzureRmKey: 'akansha.tfstate'
 
 - task: TerraformTask@5
   displayName: Terraform Validate
@@ -36,7 +36,6 @@ steps:
     outputTo: 'console'
     customCommand: 'fmt'
     environmentServiceNameAzureRM: 'My First SC'
-    environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
 
 - task: TerraformTask@5
   displayName: Terraform Plan
