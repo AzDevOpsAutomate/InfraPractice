@@ -11,7 +11,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/todoapp_infra'
     backendServiceArm: 'My First SC'
     backendAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
     backendAzureRmResourceGroupName: 'akansha-rg'
@@ -35,7 +35,7 @@ steps:
 
 - task: TerraformTask@5
   inputs:
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/todoapp_infra'
     provider: 'azurerm'
     command: 'plan'
     environmentServiceNameAzureRM: 'My First SC'
