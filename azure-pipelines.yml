@@ -6,3 +6,15 @@ steps:
   displayName: Terraform Install
   inputs:
     terraformVersion: '1.12.2'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/todoapp_infra'
+    backendServiceArm: 'My First SC'
+    backendAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
+    backendAzureRmResourceGroupName: 'akansha-rg'
+    backendAzureRmStorageAccountName: 'akanshakastorage'
+    backendAzureRmContainerName: 'akanshacontainer'
+    backendAzureRmKey: 'akansha.tfstate'
