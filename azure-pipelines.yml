@@ -18,3 +18,24 @@ steps:
     backendAzureRmStorageAccountName: 'akanshakastorage'
     backendAzureRmContainerName: 'akanshacontainer'
     backendAzureRmKey: 'akansha.tfstate'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'custom'
+    outputTo: 'console'
+    customCommand: 'fmt'
+    environmentServiceNameAzureRM: 'My First SC'
+    environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'My First SC'
+    environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
