@@ -3,9 +3,8 @@ pool: 'My First Agent'
 steps:
 
 - task: TerraformInstaller@1
-  displayName: Terraform Install
   inputs:
-    terraformVersion: '1.12.2'
+    terraformVersion: 'latest'
 
 - task: TerraformTask@5
   inputs:
@@ -38,7 +37,7 @@ steps:
 - task: TerraformTask@5
   displayName: Terraform Plan
   inputs:
-    workingDirectory: '$(System.DefaultWorkingDirectory)/todoapp_infra'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
     provider: 'azurerm'
     command: 'plan'
     environmentServiceNameAzureRM: 'My First SC'
