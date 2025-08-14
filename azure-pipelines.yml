@@ -1,5 +1,11 @@
 trigger: none
 pool: 'My First Agent'
+
+variables:
+  akansha_path: '$(System.DefaultWorkingDirectory)/terraform.tfvars'
+  service_connection: 'Azure Service Connection'
+
+
 steps:
 
 - task: TerraformInstaller@1
@@ -10,8 +16,8 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform.tfvars'
-    backendServiceArm: 'Azure Service Connection'
+    workingDirectory: $(akansha_path)
+    backendServiceArm: $(service_connection)
     backendAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
     backendAzureRmResourceGroupName: 'akansha-rg'
     backendAzureRmStorageAccountName: 'akanshakastorage'
@@ -31,7 +37,7 @@ steps:
     command: 'custom'
     outputTo: 'console'
     customCommand: 'fmt'
-    environmentServiceNameAzureRM: 'Azure Service Connection'
+    environmentServiceNameAzureRM: $(service_connection)
     environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
 
 - task: TerraformTask@5
@@ -39,6 +45,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform.tfvars'
-    environmentServiceNameAzureRM: 'Azure Service Connection'
+    workingDirectory: $(akansha_path)
+    environmentServiceNameAzureRM: $(service_connection)
     environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
