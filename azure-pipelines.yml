@@ -11,7 +11,7 @@ steps:
     provider: 'azurerm'
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform.tfvars'
-    backendServiceArm: 'My First SC'
+    backendServiceArm: 'Azure Service Connection'
     backendAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
     backendAzureRmResourceGroupName: 'akansha-rg'
     backendAzureRmStorageAccountName: 'akanshakastorage'
@@ -31,7 +31,7 @@ steps:
     command: 'custom'
     outputTo: 'console'
     customCommand: 'fmt'
-    environmentServiceNameAzureRM: 'My First SC'
+    environmentServiceNameAzureRM: 'Azure Service Connection'
     environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
 
 - task: TerraformTask@5
@@ -40,5 +40,5 @@ steps:
     provider: 'azurerm'
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform.tfvars'
-    environmentServiceNameAzureRM: 'My First SC'
+    environmentServiceNameAzureRM: 'Azure Service Connection'
     environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
