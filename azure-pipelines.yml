@@ -10,7 +10,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/todoapp_infra'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform.tfvars'
     backendServiceArm: 'My First SC'
     backendAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
     backendAzureRmResourceGroupName: 'akansha-rg'
@@ -39,6 +39,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/todoapp_infra'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform.tfvars'
     environmentServiceNameAzureRM: 'My First SC'
     environmentAzureRmOverrideSubscriptionID: '9f199aee-1ad7-464f-bd74-4b88ef990086'
